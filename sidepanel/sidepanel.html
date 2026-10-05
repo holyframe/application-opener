@@ -10,7 +10,7 @@
 
   <body>
     <div
-      id="saveResultToast"
+      id="actionResultToast"
       class="save-result-toast"
       role="status"
       aria-live="polite"
@@ -24,54 +24,11 @@
         aria-label="Home workspace"
         aria-hidden="true"
       >
-        <div class="workspace-header-leading-actions">
-          <button
-            id="exportAppDataIconButton"
-            type="button"
-            class="workspace-export-button"
-            aria-label="Export app data"
-            title="Export app data"
-            aria-haspopup="dialog"
-            aria-controls="exportAppDataModal"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <path d="M7 10l5 5 5-5" />
-              <path d="M12 15V3" />
-            </svg>
-          </button>
-        </div>
+
 
         <h2>Home workspace</h2>
         <div class="workspace-header-actions">
-          <button
-            id="homeWorkspaceImportButton"
-            type="button"
-            class="workspace-url-icon-button workspace-import-button"
-            aria-label="Import app data"
-            title="Import app data"
-            aria-haspopup="dialog"
-            aria-controls="importAppDataModal"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <path d="M17 8l-5-5-5 5" />
-              <path d="M12 3v12" />
-            </svg>
-          </button>
-          <button
-            id="homeWorkspacePromptInfoButton"
-            type="button"
-            class="workspace-url-icon-button workspace-prompt-info-button is-hidden"
-            aria-label="View or update AI prompt"
-            title="AI prompt"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M12 10v6" />
-              <path d="M12 7h.01" />
-            </svg>
-          </button>
+
           <button
             id="homeWorkspaceExchangeButton"
             type="button"
@@ -86,301 +43,27 @@
               <path d="m6 17 3-3" />
             </svg>
           </button>
-          <button
-            id="homeCancelProcessButton"
-            type="button"
-            class="workspace-cancel-process-button is-hidden"
-            aria-label="Cancel save process"
-            title="Cancel process"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" />
-              <path d="m9 9 6 6" />
-              <path d="m15 9-6 6" />
-            </svg>
-          </button>
+
         </div>
       </header>
 
-      <section class="card prompt-resume-selection-card">
-        <div class="application-actions-grid">
-          <div class="application-save-section">
-            <div class="application-action-buttons">
-              <div class="action-control-group">
-                <button
-                  id="saveButton"
-                  type="button"
-                  class="primary-button action-icon-button"
-                  aria-label="Save App"
-                  title="Save App"
-                >
-                  <span class="button-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <path d="M12 16V8" />
-                      <path d="m8.5 11.5 3.5-3.5 3.5 3.5" />
-                      <path d="M7 18.5a4.5 4.5 0 0 1-.8-8.92A6 6 0 0 1 17.65 8.4 4.9 4.9 0 0 1 18 18.5z" />
-                    </svg>
-                  </span>
-                </button>
-                <button
-                  id="saveOptionsButton"
-                  type="button"
-                  class="action-settings-button"
-                  aria-label="Save settings"
-                  title="Save settings"
-                  aria-controls="configModal"
-                  aria-haspopup="dialog"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 7h9" />
-                    <circle cx="16" cy="7" r="2" />
-                    <path d="M18 7h2" />
-                    <path d="M4 17h2" />
-                    <circle cx="9" cy="17" r="2" />
-                    <path d="M11 17h9" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="application-duplicate-section">
-            <div class="sheet-duplicate-actions">
-              <div class="action-control-group">
-                <button
-                  id="openSplitWindowsButton"
-                  type="button"
-                  class="split-windows-button action-icon-button"
-                  aria-label="Make a resume"
-                  disabled
-                  title="Make a resume is available only when the current tab is a Google Sheet."
-                >
-                  <span class="button-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                      <rect x="3" y="5" width="8" height="14" rx="1.5" />
-                      <rect x="13" y="5" width="8" height="14" rx="1.5" />
-                    </svg>
-                  </span>
-                </button>
-                <button
-                  id="makeResumeOptionsButton"
-                  type="button"
-                  class="action-settings-button"
-                  aria-label="Make resume settings"
-                  title="Make resume settings"
-                  aria-controls="makeResumeActionSettingsModal"
-                  aria-haspopup="dialog"
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M4 7h9" />
-                    <circle cx="16" cy="7" r="2" />
-                    <path d="M18 7h2" />
-                    <path d="M4 17h2" />
-                    <circle cx="9" cy="17" r="2" />
-                    <path d="M11 17h9" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div class="jobright-open-section">
-            <div
-              class="jobright-open-controls action-control-group"
-              role="group"
-              aria-label="Open Jobright applications"
-            >
-              <button
-                id="openJobrightJobsButton"
-                type="button"
-                class="jobright-open-button"
-                aria-label="Open Jobright applications"
-                disabled
-                title="Open is available only on Jobright Recommendations."
-              >
-                <span class="button-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 17 17 7" />
-                    <path d="M9 7h8v8" />
-                    <path d="M17 13v6H5V7h6" />
-                  </svg>
-                </span>
-              </button>
-              <button
-                id="openJobrightOptionsButton"
-                type="button"
-                class="action-settings-button"
-                aria-label="Open settings"
-                title="Open settings"
-                aria-controls="openActionSettingsModal"
-                aria-haspopup="dialog"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 7h9" />
-                  <circle cx="16" cy="7" r="2" />
-                  <path d="M18 7h2" />
-                  <path d="M4 17h2" />
-                  <circle cx="9" cy="17" r="2" />
-                  <path d="M11 17h9" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="home-sheet-actions">
-          <div
-            class="action-control-group home-sheet-action-group"
-            role="group"
-            aria-label="Check posting"
-          >
-            <button
-              id="checkPostingButton"
-              type="button"
-            class="secondary-button check-posting-button"
-            title="Send this posting URL to the selected AI chat"
-            >
-              <span class="button-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="m20 20-3.5-3.5" />
-                </svg>
-              </span>
-              <span>Check posting</span>
-            </button>
-            <button
-              id="checkPostingOptionsButton"
-              type="button"
-              class="action-settings-button"
-              aria-label="Check posting settings"
-              title="Check posting settings"
-              aria-controls="checkPostingActionSettingsModal"
-              aria-haspopup="dialog"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 7h9" />
-                <circle cx="16" cy="7" r="2" />
-                <path d="M18 7h2" />
-                <path d="M4 17h2" />
-                <circle cx="9" cy="17" r="2" />
-                <path d="M11 17h9" />
-              </svg>
-            </button>
-          </div>
-          <button
-            id="playButton"
-            type="button"
-            class="secondary-button home-play-button"
-            aria-label="Play"
-            title="Play is available on an unpinned AI chat tab"
-            disabled
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m8 5 11 7-11 7z" />
-            </svg>
-          </button>
-          <button
-            id="makeOrOpenAiTabButton"
-            type="button"
-            class="secondary-button make-or-open-ai-tab-button"
-            title="Open the selected AI chat, or create it if it is not open"
-          >
-            <span class="button-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M14 3h7v7" />
-                <path d="M21 3 10 14" />
-                <path d="M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6" />
-              </svg>
-            </span>
-            <span>Make or open AI tab</span>
-          </button>
-          <button
-            id="openGoogleSheetButton"
-            type="button"
-            class="secondary-button global-open-google-sheet-button"
-            title="Open the configured Google Sheet in a new Chrome window"
-          >
-            <span class="button-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M7 17 17 7" />
-                <path d="M9 7h8v8" />
-                <path d="M17 13v6H5V7h6" />
-              </svg>
-            </span>
-            <span>Open Google Sheet</span>
-          </button>
-        </div>
-      </section>
-
-      <section class="card job-description-card">
-        <div class="card-title-row">
-          <span class="prompt-resume-icon" aria-hidden="true">
+      <section class="card resume-actions-card" aria-label="Resume actions">
+        <button
+          id="openSplitWindowsButton"
+          type="button"
+          class="split-windows-button"
+          aria-label="Make a resume"
+          disabled
+          title="Make a resume is available only when the current tab is a Google Sheet."
+        >
+          <span class="button-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-              <path d="M14 2v6h6" />
-              <path d="M16 13H8" />
-              <path d="M16 17H8" />
-              <path d="M10 9H8" />
+              <rect x="3" y="5" width="8" height="14" rx="1.5" />
+              <rect x="13" y="5" width="8" height="14" rx="1.5" />
             </svg>
           </span>
-
-          <h2>Job Description</h2>
-        </div>
-
-        <div class="job-description-selection-section">
-          <ul
-            id="jobDescriptionList"
-            class="job-description-selection-list"
-            aria-label="Job description"
-          ></ul>
-        </div>
-      </section>
-
-      <section class="card profile-picker-card">
-        <div class="card-title-row profile-picker-title-row">
-          <span class="prompt-resume-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </span>
-
-          <h2>Profiles</h2>
-
-          <button id="addProfileButton" type="button" class="secondary-button profile-add-button">
-            <span>Add profile</span>
-          </button>
-        </div>
-
-        <ul id="profileList" class="profile-list" aria-label="Profiles"></ul>
-
-      </section>
-
-      <section id="deletedRowsCard" class="card deleted-rows-card is-hidden">
-        <div class="logs-header">
-          <h2>Deleted Rows</h2>
-        </div>
-
-        <div class="deleted-rows-shell">
-          <div id="emptyDeletedRows" class="empty-logs">
-            <span class="empty-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 7h8" />
-                <path d="M8 12h8" />
-                <path d="M8 17h5" />
-                <path d="M5 7h.01" />
-                <path d="M5 12h.01" />
-                <path d="M5 17h.01" />
-              </svg>
-            </span>
-            <strong>No deleted rows yet.</strong>
-            <p>Removed duplicates will appear here.</p>
-          </div>
-
-          <ul id="deletedRowsList" class="deleted-rows-list"></ul>
-        </div>
+          <span>Make a resume</span>
+        </button>
       </section>
 
       <section class="card logs-card">
@@ -421,225 +104,6 @@
     </main>
 
     <div
-      id="makeResumeActionSettingsModal"
-      class="modal action-settings-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="makeResumeActionSettingsModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="makeResumeActionSettingsModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close Make Resume settings"
-      ></button>
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="makeResumeActionSettingsModalTitle">Make Resume settings</h2>
-          <button id="makeResumeActionSettingsModalCloseButton" type="button" class="modal-close-button" aria-label="Close">&times;</button>
-        </div>
-        <p class="modal-help">Configure the Make Resume action and its Chrome keyboard shortcut.</p>
-        <div class="modal-form action-settings-form">
-          <div class="action-setting-block">
-            <h3>Resume configuration</h3>
-            <button id="makeResumeCurrentSettingsButton" type="button" class="secondary-button">
-              <span>Open Make Resume workspace</span>
-            </button>
-          </div>
-          <div class="action-setting-block">
-            <label class="config-label">Assigned hotkey</label>
-            <div class="action-hotkey-row">
-              <output id="makeResumeHotkeyValue" class="action-hotkey-value">Not assigned</output>
-              <button id="makeResumeAssignHotkeyButton" type="button" class="secondary-button">
-                <span>Assign hotkey</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="modal-actions">
-          <button id="makeResumeActionSettingsDoneButton" type="button" class="primary-button modal-action-button">
-            <span>Done</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="openActionSettingsModal"
-      class="modal action-settings-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="openActionSettingsModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="openActionSettingsModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close Open settings"
-      ></button>
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="openActionSettingsModalTitle">Open settings</h2>
-          <button id="openActionSettingsModalCloseButton" type="button" class="modal-close-button" aria-label="Close">&times;</button>
-        </div>
-        <p class="modal-help">Choose how many Jobright applications to open and configure the Chrome keyboard shortcut.</p>
-        <div class="modal-form action-settings-form">
-          <div class="action-setting-block">
-            <label class="config-label" for="jobrightOpenCountInput">Applications to open</label>
-            <select id="jobrightOpenCountInput" class="config-input">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3" selected>3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-              <option value="150">150</option>
-            </select>
-          </div>
-          <div class="action-setting-block">
-            <label class="config-label">Assigned hotkey</label>
-            <div class="action-hotkey-row">
-              <output id="openHotkeyValue" class="action-hotkey-value">Not assigned</output>
-              <button id="openAssignHotkeyButton" type="button" class="secondary-button">
-                <span>Assign hotkey</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="modal-actions">
-          <button id="openActionSettingsDoneButton" type="button" class="primary-button modal-action-button">
-            <span>Done</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="checkPostingActionSettingsModal"
-      class="modal action-settings-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="checkPostingActionSettingsModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="checkPostingActionSettingsModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close Check posting settings"
-      ></button>
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="checkPostingActionSettingsModalTitle">Check posting settings</h2>
-          <button id="checkPostingActionSettingsModalCloseButton" type="button" class="modal-close-button" aria-label="Close">&times;</button>
-        </div>
-        <p class="modal-help">Choose Copilot, Perplexity, or DeepSeek and edit that chat URL. After the job URL is sent, focus stays on that chat.</p>
-        <div class="modal-form action-settings-form">
-          <fieldset class="check-posting-ai-list">
-            <legend class="config-label">AI chat</legend>
-            <div class="check-posting-ai-option">
-              <label class="check-posting-ai-choice" for="checkPostingProvider-copilot">
-                <input
-                  id="checkPostingProvider-copilot"
-                  type="radio"
-                  name="checkPostingAiProvider"
-                  value="copilot"
-                  checked
-                />
-                <span>Copilot</span>
-              </label>
-              <input
-                id="checkPostingUrl-copilot"
-                class="config-input"
-                data-check-posting-url="copilot"
-                type="url"
-                spellcheck="false"
-                autocomplete="off"
-                placeholder="https://copilot.microsoft.com/chats/..."
-              />
-            </div>
-            <div class="check-posting-ai-option">
-              <label class="check-posting-ai-choice" for="checkPostingProvider-perplexity">
-                <input
-                  id="checkPostingProvider-perplexity"
-                  type="radio"
-                  name="checkPostingAiProvider"
-                  value="perplexity"
-                />
-                <span>Perplexity</span>
-              </label>
-              <input
-                id="checkPostingUrl-perplexity"
-                class="config-input"
-                data-check-posting-url="perplexity"
-                type="url"
-                spellcheck="false"
-                autocomplete="off"
-                placeholder="https://www.perplexity.ai/..."
-              />
-            </div>
-            <div class="check-posting-ai-option">
-              <label class="check-posting-ai-choice" for="checkPostingProvider-deepseek">
-                <input
-                  id="checkPostingProvider-deepseek"
-                  type="radio"
-                  name="checkPostingAiProvider"
-                  value="deepseek"
-                />
-                <span>DeepSeek</span>
-              </label>
-              <input
-                id="checkPostingUrl-deepseek"
-                class="config-input"
-                data-check-posting-url="deepseek"
-                type="url"
-                spellcheck="false"
-                autocomplete="off"
-                placeholder="https://chat.deepseek.com/..."
-              />
-            </div>
-          </fieldset>
-          <div class="action-setting-block">
-            <label class="config-label">Assigned hotkey</label>
-            <div class="action-hotkey-row">
-              <output id="checkPostingHotkeyValue" class="action-hotkey-value">Not assigned</output>
-              <button id="checkPostingAssignHotkeyButton" type="button" class="secondary-button">
-                <span>Assign hotkey</span>
-              </button>
-            </div>
-          </div>
-          <fieldset class="check-posting-ai-list">
-            <legend class="config-label">Play button</legend>
-            <div class="action-setting-block">
-              <label class="config-label" for="playPostingTabCountInput">Number of tabs</label>
-              <input id="playPostingTabCountInput" class="config-input" type="number" min="1" step="1" value="1" required />
-              <p class="modal-help">Send the first URL immediately, then wait a random 1–1.5 minutes between URLs. Click Play again to stop.</p>
-            </div>
-            <div class="action-setting-block">
-              <label class="config-label">Play hotkey</label>
-              <div class="action-hotkey-row">
-                <output id="playPostingHotkeyValue" class="action-hotkey-value">Not assigned</output>
-                <button id="playPostingAssignHotkeyButton" type="button" class="secondary-button">
-                  <span>Assign hotkey</span>
-                </button>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-        <div class="modal-actions">
-          <button id="checkPostingActionSettingsDoneButton" type="button" class="primary-button modal-action-button">
-            <span>Done</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
       id="downloadResumeActionSettingsModal"
       class="modal action-settings-modal is-hidden"
       role="dialog"
@@ -677,438 +141,6 @@
         </div>
       </div>
     </div>
-    <div
-      id="configModal"
-      class="modal config-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="configModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="configModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close app settings"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="configModalTitle">Save application setting</h2>
-          <button
-            id="configModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            Ã—
-          </button>
-        </div>
-
-        <p class="config-help">
-          Set the Google Spreadsheet used by this extension. Application rows
-          are saved to a tab named after each selected profile.
-        </p>
-
-        <div class="modal-form config-modal-form">
-          <div class="action-setting-block">
-            <label class="config-label">Save App hotkey</label>
-            <div class="action-hotkey-row">
-              <output id="saveHotkeyValue" class="action-hotkey-value">Not assigned</output>
-              <button id="saveAssignHotkeyButton" type="button" class="secondary-button">
-                <span>Assign hotkey</span>
-              </button>
-            </div>
-          </div>
-          <div class="action-setting-block">
-            <label class="config-label" for="aiProviderInput">AI provider</label>
-            <select id="aiProviderInput" class="config-input">
-              <option value="chatgpt" selected>ChatGPT (default)</option>
-              <option value="deepseek">DeepSeek</option>
-              <option value="none">No Model (resume copy + Google Sheet)</option>
-            </select>
-            <p class="config-help">
-              With No Model, capture the job page, copy each profile's resume, and
-              save to Google Sheets. No job description, AI prompt, or workspace switch.
-            </p>
-          </div>
-
-          <div class="config-field-row">
-            <div class="config-field">
-              <label class="config-label" for="spreadsheetIdInput">Google Sheet URL or ID</label>
-              <input
-                id="spreadsheetIdInput"
-                type="text"
-                class="config-input"
-                placeholder="https://docs.google.com/spreadsheets/d/..."
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="config-field">
-              <label class="config-label" for="sheetNameInput">Sheet tab name</label>
-              <input
-                id="sheetNameInput"
-                type="text"
-                class="config-input"
-                placeholder="Sheet1"
-                autocomplete="off"
-              />
-            </div>
-          </div>
-
-          <div class="prompt-selection-section">
-            <ul id="promptList" class="prompt-selection-list" aria-label="Prompt"></ul>
-          </div>
-
-        </div>
-
-        <div class="modal-actions">
-          <button id="configModalCancelButton" type="button" class="secondary-button modal-action-button">
-            <span>Cancel</span>
-          </button>
-
-          <button id="saveConfigButton" type="button" class="primary-button modal-action-button">
-            <span>Save configuration</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="profileFormModal"
-      class="modal profile-form-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="profileFormModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="profileFormModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close profile dialog"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="profileFormModalTitle">Add profile</h2>
-          <button
-            id="profileFormModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <p id="profileFormModalHelp" class="modal-help">
-          Set the profile name and resume template.
-        </p>
-
-        <div class="modal-form">
-          <div class="config-field">
-            <label class="config-label" for="profileNameInput">Profile name</label>
-            <input
-              id="profileNameInput"
-              type="text"
-              class="config-input"
-              placeholder="e.g. Robert Coan"
-              autocomplete="off"
-            />
-          </div>
-
-          <div class="config-field">
-            <label class="config-label" for="resumeTemplateInput">Resume Template</label>
-            <input
-              id="resumeTemplateInput"
-              type="text"
-              class="config-input"
-              placeholder="https://docs.google.com/document/d/..."
-              autocomplete="off"
-            />
-          </div>
-        </div>
-
-        <p id="profileFormModalStatus" class="config-status is-hidden" aria-live="polite"></p>
-
-        <div class="modal-actions">
-          <button id="profileFormModalCancelButton" type="button" class="secondary-button modal-action-button">
-            <span>Cancel</span>
-          </button>
-
-          <button id="profileFormModalSubmitButton" type="button" class="primary-button modal-action-button">
-            <span>Add profile</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="profileNotesModal"
-      class="modal profile-notes-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="profileNotesModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="profileNotesModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close profile notes dialog"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="profileNotesModalTitle">Profile notes</h2>
-          <button
-            id="profileNotesModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <p id="profileNotesModalHelp" class="modal-help">
-          Keep notes for this profile.
-        </p>
-
-        <div class="modal-form">
-          <div class="config-field">
-            <label class="config-label" for="profileNotesInput">Notes</label>
-            <textarea
-              id="profileNotesInput"
-              class="profile-notes-input"
-              placeholder="Write notes for this profile..."
-              rows="16"
-            ></textarea>
-          </div>
-        </div>
-
-        <div class="modal-actions">
-          <button id="profileNotesModalCancelButton" type="button" class="secondary-button modal-action-button">
-            <span>Cancel</span>
-          </button>
-
-          <button id="profileNotesModalSubmitButton" type="button" class="primary-button modal-action-button">
-            <span>Save notes</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="profileResumeSettingsModal"
-      class="modal profile-resume-settings-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="profileResumeSettingsModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="profileResumeSettingsModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close profile resume settings"
-      ></button>
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="profileResumeSettingsModalTitle">Prompt resume settings</h2>
-          <button id="profileResumeSettingsModalCloseButton" type="button" class="modal-close-button" aria-label="Close">×</button>
-        </div>
-        <p class="modal-help">Each profile keeps one prompt resume selected. The first resume is used by default. Changes are saved immediately. Manage Auto from the profile row.</p>
-        <div id="profilePromptResumeSection" class="profile-prompt-resume-section">
-          <ul id="promptResumeList" class="prompt-resume-list" aria-label="Prompt resumes"></ul>
-        </div>
-        <div class="modal-actions">
-          <button id="profileResumeSettingsAddButton" type="button" class="secondary-button modal-action-button">Add prompt resume</button>
-          <button id="profileResumeSettingsDoneButton" type="button" class="primary-button modal-action-button">Done</button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="promptResumeFormModal"
-      class="modal prompt-resume-form-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="promptResumeFormModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="promptResumeFormModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close prompt resume dialog"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="promptResumeFormModalTitle">Add a Prompt Resume</h2>
-          <button
-            id="promptResumeFormModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <p id="promptResumeFormModalHelp" class="modal-help">Add a label and the prompt resume text.</p>
-
-        <div class="modal-form">
-          <div class="config-field">
-            <label class="config-label" for="promptResumeLabelInput">Label</label>
-            <input
-              id="promptResumeLabelInput"
-              type="text"
-              class="config-input"
-              placeholder="e.g. Frontend"
-              autocomplete="off"
-            />
-          </div>
-
-          <div class="config-field">
-            <label class="config-label" for="promptResumeContentInput">Prompt resume text</label>
-            <textarea
-              id="promptResumeContentInput"
-              class="prompt-resume-content-input"
-              placeholder="Paste or type the prompt resume content..."
-              rows="20"
-            ></textarea>
-          </div>
-        </div>
-
-        <p id="promptResumeFormModalStatus" class="config-status is-hidden" aria-live="polite"></p>
-
-        <div class="modal-actions">
-          <button id="promptResumeFormModalCancelButton" type="button" class="secondary-button modal-action-button">
-            <span>Cancel</span>
-          </button>
-
-          <button id="promptResumeFormModalSubmitButton" type="button" class="primary-button modal-action-button">
-            <span>Add a Prompt Resume</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="promptFormModal"
-      class="modal prompt-form-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="promptFormModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="promptFormModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close edit prompt dialog"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="promptFormModalTitle">Edit Prompt</h2>
-          <button
-            id="promptFormModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <div class="modal-form">
-          <div class="config-field">
-            <label class="config-label" for="promptContentInput">Prompt text</label>
-            <textarea
-              id="promptContentInput"
-              class="prompt-content-input"
-              placeholder="Paste or type the prompt content..."
-              rows="20"
-            ></textarea>
-          </div>
-        </div>
-
-        <div class="modal-actions">
-          <button id="promptFormModalCancelButton" type="button" class="secondary-button modal-action-button">
-            <span>Cancel</span>
-          </button>
-
-          <button id="promptFormModalSubmitButton" type="button" class="primary-button modal-action-button">
-            <span>Save Changes</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="jobDescriptionFormModal"
-      class="modal job-description-form-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="jobDescriptionFormModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="jobDescriptionFormModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Close edit job description dialog"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="jobDescriptionFormModalTitle">Edit Job Description</h2>
-          <button
-            id="jobDescriptionFormModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <div class="modal-form">
-          <div class="config-field">
-            <label class="config-label" for="jobDescriptionContentInput">Job description text</label>
-            <textarea
-              id="jobDescriptionContentInput"
-              class="job-description-content-input"
-              placeholder="Paste or type the job description..."
-              rows="20"
-            ></textarea>
-          </div>
-        </div>
-
-        <div class="modal-actions">
-          <button
-            id="jobDescriptionFormModalCancelButton"
-            type="button"
-            class="secondary-button modal-action-button"
-          >
-            <span>Cancel</span>
-          </button>
-
-          <button
-            id="jobDescriptionFormModalSubmitButton"
-            type="button"
-            class="primary-button modal-action-button"
-          >
-            <span>Save Changes</span>
-          </button>
-        </div>
-      </div>
-    </div>
 
     <div
       id="splitWindowsModal"
@@ -1127,68 +159,10 @@
 
       <div class="modal-panel">
         <header class="modal-header workspace-header-panel">
-          <div class="workspace-header-leading-actions">
-            <button
-              id="applicationWorkspaceExportButton"
-              type="button"
-              class="workspace-export-button"
-              aria-label="Export app data"
-              title="Export app data"
-              aria-haspopup="dialog"
-              aria-controls="exportAppDataModal"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <path d="M7 10l5 5 5-5" />
-                <path d="M12 15V3" />
-              </svg>
-            </button>
-            <button
-              id="applicationWorkspaceNotesButton"
-              type="button"
-              class="workspace-notes-button"
-              aria-label="Open profile notes"
-              title="Profile notes"
-              disabled
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4h16v12l-4 4H4z" />
-                <path d="M16 20v-4h4" />
-                <path d="M8 8h8" />
-                <path d="M8 12h5" />
-              </svg>
-            </button>
-          </div>
+
           <h2 id="splitWindowsModalTitle">Open Tab + Sidebar</h2>
           <div class="workspace-header-actions split-windows-header-actions">
-            <button
-              id="applicationWorkspaceImportButton"
-              type="button"
-              class="workspace-url-icon-button workspace-import-button"
-              aria-label="Import app data"
-              title="Import app data"
-              aria-haspopup="dialog"
-              aria-controls="importAppDataModal"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <path d="M17 8l-5-5-5 5" />
-                <path d="M12 3v12" />
-              </svg>
-            </button>
-            <button
-              id="applicationWorkspacePromptInfoButton"
-              type="button"
-              class="workspace-url-icon-button workspace-prompt-info-button is-hidden"
-              aria-label="View or update AI prompt"
-              title="AI prompt"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 10v6" />
-                <path d="M12 7h.01" />
-              </svg>
-            </button>
+
             <button
               id="splitWindowsModalCloseButton"
               type="button"
@@ -1206,25 +180,13 @@
                 </svg>
               </span>
             </button>
-            <button
-              id="applicationCancelProcessButton"
-              type="button"
-              class="workspace-cancel-process-button is-hidden"
-              aria-label="Cancel save process"
-              title="Cancel process"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="m9 9 6 6" />
-                <path d="m15 9-6 6" />
-              </svg>
-            </button>
+
           </div>
         </header>
 
         <div id="splitWindowsInputView" class="split-windows-input-view">
           <p class="modal-help">
-            Paste rows copied from the Google Sheet written by Save App. The
+            Paste application rows copied from a Google Sheet. The
             expected order is Timestamp, Job title, Profile, Chat, Job, Google
             Doc, and optional Apply Now (columns A-G). The older four-field
             Profile, Chat, Job, Google Doc format also works. URL fields may be
@@ -1324,24 +286,7 @@
               id="applicationWorkspaceRecordJobUrl"
               class="application-workspace-record-job-url"
             ></span>
-            <div class="application-workspace-url-actions">
-              <button
-                id="applicationWorkspaceDeleteButton"
-                type="button"
-                class="workspace-url-icon-button"
-                aria-label="Delete application"
-                title="Delete application"
-                disabled
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 7h16" />
-                  <path d="M10 11v6" />
-                  <path d="M14 11v6" />
-                  <path d="M6 7l1 14h10l1-14" />
-                  <path d="M9 7V4h6v3" />
-                </svg>
-              </button>
-            </div>
+
           </div>
           <div
             id="applicationWorkspaceJobGptLocation"
@@ -1493,12 +438,12 @@
               placeholder="Enter a URL"
             />
             <div
-              id="saveWorkspaceActions"
-              class="save-workspace-actions is-hidden"
+              id="resumeWorkspaceActions"
+              class="resume-workspace-actions is-hidden"
             >
               <div class="action-control-group workspace-action-control">
                 <button
-                  id="saveWorkspaceBuildButton"
+                  id="resumeWorkspaceBuildButton"
                   type="button"
                   class="primary-button action-icon-button"
                   aria-label="Build resume"
@@ -1518,7 +463,7 @@
 
               <div class="action-control-group workspace-action-control workspace-download-control">
                 <button
-                  id="saveWorkspaceDownloadButton"
+                  id="resumeWorkspaceDownloadButton"
                   type="button"
                   class="download-resume-button action-icon-button"
                   aria-label="Download resume"
@@ -1534,7 +479,7 @@
                   </span>
                 </button>
                 <button
-                  id="saveWorkspaceDownloadOptionsButton"
+                  id="resumeWorkspaceDownloadOptionsButton"
                   type="button"
                   class="action-settings-button"
                   aria-label="Download resume settings"
@@ -1593,36 +538,18 @@
                   <path d="M8 17h5" />
                 </svg>
               </span>
-              <strong id="splitWindowsPreviewEmptyTitle">No Information page yet</strong>
+              <strong id="splitWindowsPreviewEmptyTitle">No application open yet</strong>
               <span id="splitWindowsPreviewEmptyHelp">
-                Use Save App to add the Information page and profile resume.
+                Use Make a resume to open an application and its resume.
               </span>
             </div>
           </div>
-
 
           <p class="split-windows-preview-help">
             Preview content is embedded in the side panel. Some job sites may
             block embedded previews.
           </p>
 
-          <div id="splitWindowsBatchActions" class="modal-actions">
-            <button
-              id="splitWindowsPreviewBackButton"
-              type="button"
-              class="secondary-button modal-action-button"
-            >
-              <span>Back</span>
-            </button>
-
-            <button
-              id="splitWindowsPreviewDownloadButton"
-              type="button"
-              class="download-resume-button modal-action-button"
-            >
-              <span>Download Resume</span>
-            </button>
-          </div>
 
         </div>
       </div>
@@ -1703,201 +630,6 @@
       </div>
     </div>
 
-    <div
-      id="importAppDataModal"
-      class="modal import-app-data-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="importAppDataModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="importAppDataModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Cancel import app data"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="importAppDataModalTitle">Import app data?</h2>
-          <button
-            id="importAppDataModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <p class="modal-help">
-          Restore sheet settings, prompts, job description, and profiles for
-          this app from a backup JSON file.
-        </p>
-
-        <label
-          class="app-data-transfer-option export-app-data-option"
-          for="importIncludePromptResumeInfoCheckbox"
-        >
-          <input
-            id="importIncludePromptResumeInfoCheckbox"
-            type="checkbox"
-            class="app-data-transfer-checkbox"
-            checked
-          />
-          <span>Include prompt resume info</span>
-        </label>
-
-        <div class="modal-actions">
-          <button
-            id="importAppDataModalCancelButton"
-            type="button"
-            class="secondary-button modal-action-button"
-          >
-            <span>Cancel</span>
-          </button>
-
-          <button
-            id="importAppDataModalConfirmButton"
-            type="button"
-            class="primary-button modal-action-button"
-          >
-            <span>Choose file</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <input
-      id="importAppDataFileInput"
-      type="file"
-      accept="application/json,.json"
-      hidden
-      tabindex="-1"
-      aria-hidden="true"
-    />
-
-    <div
-      id="exportAppDataModal"
-      class="modal export-app-data-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="exportAppDataModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="exportAppDataModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Cancel export app data"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="exportAppDataModalTitle">Export app data?</h2>
-          <button
-            id="exportAppDataModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <p class="modal-help">
-          Save sheet settings, prompts, job description, and profiles into this
-          project's <code>data</code> folder. The first export asks you to choose
-          that folder; later exports reuse it.
-        </p>
-
-        <label
-          class="app-data-transfer-option export-app-data-option"
-          for="exportIncludePromptResumeInfoCheckbox"
-        >
-          <input
-            id="exportIncludePromptResumeInfoCheckbox"
-            type="checkbox"
-            class="app-data-transfer-checkbox"
-            checked
-          />
-          <span>Include prompt resume info</span>
-        </label>
-
-        <div class="modal-actions">
-          <button
-            id="exportAppDataModalCancelButton"
-            type="button"
-            class="secondary-button modal-action-button"
-          >
-            <span>Cancel</span>
-          </button>
-
-          <button
-            id="exportAppDataModalConfirmButton"
-            type="button"
-            class="primary-button modal-action-button"
-          >
-            <span>Export</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div
-      id="deleteApplicationModal"
-      class="modal delete-application-modal is-hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="deleteApplicationModalTitle"
-      aria-hidden="true"
-    >
-      <button
-        id="deleteApplicationModalBackdrop"
-        type="button"
-        class="modal-backdrop"
-        aria-label="Cancel delete application"
-      ></button>
-
-      <div class="modal-panel">
-        <div class="modal-header">
-          <h2 id="deleteApplicationModalTitle">Delete application?</h2>
-          <button
-            id="deleteApplicationModalCloseButton"
-            type="button"
-            class="modal-close-button"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <p id="deleteApplicationModalHelp" class="modal-help">
-          This removes the Google Sheet row, trashes the copied resume Doc,
-          closes pickup windows, returns the side panel to Home, and opens the
-          job URL in the main tab.
-        </p>
-
-        <div class="modal-actions">
-          <button
-            id="deleteApplicationModalCancelButton"
-            type="button"
-            class="secondary-button modal-action-button"
-          >
-            <span>Cancel</span>
-          </button>
-
-          <button
-            id="deleteApplicationModalConfirmButton"
-            type="button"
-            class="danger-button modal-action-button"
-          >
-            <span>Delete</span>
-          </button>
-        </div>
-      </div>
-    </div>
 
     <script src="tab-close-focus.js"></script>
     <script src="sidepanel.js"></script>

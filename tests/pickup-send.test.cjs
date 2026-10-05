@@ -163,7 +163,7 @@ test("DeepSeek sends to the picked-up tab without selecting a mode", async () =>
 test("the Application workspace exposes a separate text box and Send button", () => {
   assert.match(html, /id="applicationWorkspaceAiSendInput"/);
   assert.match(html, /id="applicationWorkspaceAiSendButton"/);
-  assert.match(panel, /type: "SEND_TEXT_TO_AI_TAB"/);
+  assert.match(panel, /request\("SEND_TEXT_TO_AI_TAB"/);
   assert.match(panel, /tabId: pickedUpTab\.tabId/);
   assert.match(panel, /sendTextDraft/);
 });

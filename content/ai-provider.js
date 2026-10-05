@@ -69,76 +69,8 @@ function isVisibleElement(element) {
   );
 }
 
-function controlIndicatesAiChatRunning(element) {
-  const labels = [
-    element.getAttribute("aria-label"),
-    element.getAttribute("title"),
-    element.getAttribute("data-testid"),
-    element.getAttribute("data-test-id"),
-    element.getAttribute("name"),
-    element.textContent
-  ]
-    .filter(Boolean)
-    .map((label) =>
-      String(label)
-        .replace(/([a-z])([A-Z])/g, "$1 $2")
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, " ")
-        .trim()
-    );
 
-  return labels.some((label) => {
-    if (label === "stop") {
-      return true;
-    }
-    const describesActivity =
-      /\b(generating|generation|responding|response|answering|streaming|output|button)\b/.test(
-        label
-      );
-    return (
-      (describesActivity && /\bstop\b/.test(label)) ||
-      (/\bcancel\b/.test(label) &&
-        /\b(generating|generation|responding|response|answering|streaming|output)\b/.test(
-          label
-        ))
-    );
-  });
-}
 
-function isDeepSeekChatRunning() {
-  if (location.hostname.toLowerCase() !== "chat.deepseek.com") {
-    return false;
-  }
-
-  return Boolean(
-    findFirst([
-      "div.ds-button--primary.ds-button--circle:not(.ds-button--disabled)",
-      'div[role="button"].ds-button--primary:not(.ds-button--disabled)'
-    ])
-  );
-}
-
-function isAiChatRunning(options = {}) {
-  if (options.includeDeepSeekPrimaryControl === true && isDeepSeekChatRunning()) {
-    return true;
-  }
-
-  if (
-    findFirst([
-      '[data-state="streaming"]',
-      '[data-status="streaming"]',
-      '[data-state="generating"]',
-      '[data-status="generating"]',
-      '[data-is-generating="true"]'
-    ])
-  ) {
-    return true;
-  }
-
-  return Array.from(document.querySelectorAll(CLICKABLE_SEND_SELECTOR))
-    .filter(isVisibleElement)
-    .some(controlIndicatesAiChatRunning);
-}
 
 function findFirst(selectors, root = document) {
   for (const selector of selectors) {
@@ -393,7 +325,7 @@ async function waitForPromptInput(provider, timeoutMs = 10000) {
 
   return null;
 }
-async function fillAndSend(text, options = {}) {
+async function fillAndSend(text) {
   const provider = getProvider();
   if (!provider) {
     throw new Error("This AI provider is not supported on the current page.");
@@ -404,14 +336,7 @@ async function fillAndSend(text, options = {}) {
     throw new Error(`${provider.label} prompt input was not found.`);
   }
 
-  const submitOnlyWhenIdle = options.submitOnlyWhenIdle === true;
-  const chatWasRunning =
-    submitOnlyWhenIdle &&
-    isAiChatRunning({ includeDeepSeekPrimaryControl: true });
   fillPromptInput(input, text, provider);
-  if (chatWasRunning) {
-    return { submitted: false, reason: "chat-running" };
-  }
 
   const beforeSendDelay = provider.beforeSendDelayMs || {
     min: 4000,
@@ -425,9 +350,6 @@ async function fillAndSend(text, options = {}) {
     await sleep(beforeSendDelayMs);
   }
 
-  if (submitOnlyWhenIdle && isAiChatRunning()) {
-    return { submitted: false, reason: "chat-running" };
-  }
 
   const sendButton = await waitForReadySendButton(
     provider,
@@ -467,9 +389,7 @@ if (!globalThis.__applicationHelperAiProviderListenerRegistered) {
       return;
     }
 
-    const operation = fillAndSend(message.text, {
-      submitOnlyWhenIdle: message.submitOnlyWhenIdle === true
-    });
+    const operation = fillAndSend(message.text);
 
     operation
       .then((result) => sendResponse({ ok: true, ...result }))

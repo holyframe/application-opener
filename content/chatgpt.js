@@ -57,33 +57,20 @@ function fillChatGptInput(element, text) {
   element.dispatchEvent(new Event("change", { bubbles: true }));
 }
 
-function isAiChatRunning() {
-  return Boolean(document.querySelector(
-    '[data-testid="stop-button"], button[aria-label="Stop generating"], button[aria-label="Stop streaming"], [data-is-generating="true"]'
-  ));
-}
 
-async function fillAndSend(text, options = {}) {
+async function fillAndSend(text) {
   const input = findChatGptInput();
   if (!input) {
     throw new Error("ChatGPT input not found. Open a chat and try again.");
   }
 
-  const submitOnlyWhenIdle = options.submitOnlyWhenIdle === true;
-  const chatWasRunning = submitOnlyWhenIdle && isAiChatRunning();
   fillChatGptInput(input, text);
-  if (chatWasRunning) {
-    return { submitted: false, reason: "chat-running" };
-  }
 
   const beforeSendMs = randomDelayMs(
     CHATGPT_BEFORE_SEND_MS.min,
     CHATGPT_BEFORE_SEND_MS.max
   );
   await sleep(beforeSendMs);
-  if (submitOnlyWhenIdle && isAiChatRunning()) {
-    return { submitted: false, reason: "chat-running" };
-  }
 
   const sendButton = findSendButton();
   if (!sendButton) {
@@ -106,9 +93,7 @@ if (!globalThis.__applicationHelperChatGptListenerRegistered) {
       return;
     }
 
-    fillAndSend(message.text, {
-      submitOnlyWhenIdle: message.submitOnlyWhenIdle === true
-    })
+    fillAndSend(message.text)
       .then((result) => sendResponse({ ok: true, ...result }))
       .catch((error) => {
         sendResponse({
