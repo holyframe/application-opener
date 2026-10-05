@@ -1,0 +1,127 @@
+{
+  "manifest_version": 3,
+  "name": "Application Opener",
+  "description": "A Chrome extension that opens a partial-width UI and saves the current tab URL to Google Sheets.",
+  "version": "1.0.32",
+  "permissions": ["sidePanel", "activeTab", "storage", "identity", "tabs", "tabGroups", "scripting", "alarms", "downloads", "clipboardWrite"],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://chat.deepseek.com/*",
+    "https://copilot.microsoft.com/*",
+    "https://*.copilot.microsoft.com/*",
+    "https://www.perplexity.ai/*",
+    "https://perplexity.ai/*",
+    "https://*.perplexity.ai/*",
+    "https://jobright.ai/*",
+    "https://*.jobright.ai/*",
+    "https://docs.google.com/*",
+    "https://sheets.googleapis.com/*",
+    "https://docs.googleapis.com/*",
+    "https://www.googleapis.com/*"
+  ],
+  "optional_host_permissions": ["https://*/*"],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/save-status-saving.svg",
+        "assets/save-status-success.svg",
+        "assets/save-status-failed.svg"
+      ],
+      "matches": ["https://*/*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/*", "https://chat.openai.com/*"],
+      "js": ["content/chatgpt.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://chat.deepseek.com/*"],
+      "js": ["content/ai-provider.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://copilot.microsoft.com/*",
+        "https://*.copilot.microsoft.com/*"
+      ],
+      "js": ["content/copilot.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.perplexity.ai/*",
+        "https://perplexity.ai/*",
+        "https://*.perplexity.ai/*"
+      ],
+      "js": ["content/perplexity.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://jobright.ai/*", "https://*.jobright.ai/*"],
+      "js": ["content/jobright.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
+  "oauth2": {
+    "client_id": "1087409152703-hvi25ibge9k1rg16sqb9f1vekhpe2keg.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/spreadsheets",
+      "https://www.googleapis.com/auth/documents",
+      "https://www.googleapis.com/auth/drive"
+    ]
+  },
+  "action": {
+    "default_title": "Open Application Opener",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "32": "assets/icon32.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "commands": {
+    "close-tab-safely": {
+      "suggested_key": {
+        "default": "Ctrl+D"
+      },
+      "description": "Close tab only when no profiles are selected"
+    },
+    "save-app": {
+      "suggested_key": {
+        "default": "Ctrl+Q"
+      },
+      "description": "Save App to Google Sheet"
+    },
+    "make-resume": {
+      "description": "Open Make Resume"
+    },
+    "open-jobright": {
+      "description": "Open selected Jobright applications"
+    },
+    "check-posting": {
+      "description": "Check posting in Copilot"
+    },
+    "play-posting": {
+      "description": "Start or stop sending job tabs to the current AI chat"
+    },
+    "download-resume": {
+      "description": "Download the current workspace resume"
+    }
+  },
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "side_panel": {
+    "default_path": "sidepanel/sidepanel.html"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  }
+}
